@@ -5,7 +5,7 @@ const registerUser = async (req, res) => {
   const { name, password } = req.body;
   try {
     const result = await pool.query(
-      "INSERT INTO user (name, password) VALUES ($1, $2) RETURNING *",
+      "INSERT INTO imfusers (name, password) VALUES ($1, $2) RETURNING *",
       [name, password]
     );
     res.status(201).send(result.rows[0]);
@@ -18,7 +18,7 @@ const loginUser = async (req, res) => {
   const { name, password } = req.body;
   try {
     const result = await pool.query(
-      "SELECT name, password FROM user WHERE name = $1 AND password = $2",
+      "SELECT name, password FROM imfusersrs WHERE name = $1 AND password = $2",
       [name, password]
     );
     if (result.rowCount === 0)

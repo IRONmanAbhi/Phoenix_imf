@@ -7,7 +7,7 @@ const isLoggedIn = async (req, res, next) => {
   try {
     let decoded = verifyToken(req.cookies.token);
     const result = await pool.query(
-      "SELECT * FROM user WHERE name = $1 AND id = $2",
+      "SELECT * FROM imfusers WHERE name = $1 AND id = $2",
       [decoded.name, decoded.id]
     );
     if (result.rowCount === 0)

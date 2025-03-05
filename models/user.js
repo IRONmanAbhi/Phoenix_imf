@@ -2,12 +2,12 @@ const pool = require("../config/postgreConfig");
 
 const createTable = async () => {
   const query = `
-      CREATE TABLE IF NOT EXISTS user (
+      CREATE TABLE IF NOT EXISTS imfusers (
           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
           name TEXT NOT NULL,
           password TEXT NOT NULL,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `;
   try {
