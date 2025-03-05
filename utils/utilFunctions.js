@@ -1,10 +1,11 @@
 const codeName = require("./codename");
+const jwt = require("jsonwebtoken");
 
 const generateSuccessProbability = () =>
   `${Math.floor(Math.random() * 41) + 60}%`;
 
 const generateCodename = () => {
-  const name = "The " + codeName[Math.floor(Math.random() * names.length)];
+  const name = "The " + codeName[Math.floor(Math.random() * codeName.length)];
   return name;
 };
 

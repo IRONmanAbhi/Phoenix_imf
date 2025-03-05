@@ -23,9 +23,9 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/logout", logoutUser);
 
-router.get("/gadget", isLoggedIn, addGadget);
-router.post("/gadget", isLoggedIn, showGadget);
-router.patch("/gadgets/:id", isLoggedIn, updateGadget);
-router.delete("/gadgets/:id", isLoggedIn, deleteGadget);
-router.post("/gadgets/:id/self-destruct", isLoggedIn, selfDestruct);
+router.get("/gadget", isLoggedIn, showGadget);
+router.post("/gadget", isLoggedIn, addGadget);
+router.patch("/gadget/:id", isLoggedIn, updateGadget);
+router.delete("/gadget/:id", isLoggedIn, deleteGadget);
+router.post("/gadget/:id/self-destruct", isLoggedIn, selfDestruct);
 module.exports = router;

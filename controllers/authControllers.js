@@ -18,7 +18,7 @@ const loginUser = async (req, res) => {
   const { name, password } = req.body;
   try {
     const result = await pool.query(
-      "SELECT name, password FROM imfusersrs WHERE name = $1 AND password = $2",
+      "SELECT * FROM imfusers WHERE name = $1 AND password = $2",
       [name, password]
     );
     if (result.rowCount === 0)
@@ -26,15 +26,14 @@ const loginUser = async (req, res) => {
 
     let token = generateToken(result.rows[0]);
     res.cookie("token", token);
-    res.redirect("/gadgets");
+    res.redirect("/gadget");
   } catch (error) {
-    res.status(500).json({ error: "Database error" });
+    res.status(500).json({ error: "Database error", message: error.message });
   }
 };
 
 const logoutUser = async (req, res) => {
   res.cookie("token", "");
-  req.flash("error", "user logged out successfully");
   res.redirect("/");
 };
 

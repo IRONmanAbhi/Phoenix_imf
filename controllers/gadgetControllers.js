@@ -17,6 +17,8 @@ const showGadget = async (req, res) => {
     }
 
     const result = await pool.query(query, values);
+    if (result.rowCount === 0)
+      return res.status(200).send("No Gadget At the moment");
     const gadgets = result.rows.map((gadget) => ({
       ...gadget,
       generateSuccessProbability: generateSuccessProbability(),

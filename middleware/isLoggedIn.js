@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { verifyToken } = require("../utils/utilFunctions");
+const pool = require("./../config/postgreConfig");
 
 const isLoggedIn = async (req, res, next) => {
   if (!req.cookies.token) return res.redirect(500, "/");
