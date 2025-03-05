@@ -2,11 +2,10 @@ const pool = require("../config/postgreConfig");
 
 const createTable = async () => {
   const query = `
-      CREATE TYPE IF NOT EXISTS status_enum AS ENUM ('Available', 'Deployed', 'Destroyed', 'Decommissioned');
-      CREATE TABLE IF NOT EXISTS gadgets (
+      CREATE TABLE IF NOT EXISTS user (
           id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
           name TEXT NOT NULL,
-          status status_enum NOT NULL DEFAULT 'Available',
+          password TEXT NOT NULL,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       );
